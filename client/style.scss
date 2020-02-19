@@ -1,0 +1,699 @@
+// import required fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+
+// border check purposees only
+$bordercheck: 1px red solid;
+
+// colors
+$color: (
+    primary: #0E153A,
+    secondary: #8DD070,
+    accentsblue: #43DDE6,
+    accentspink: #FC5185,
+    dark: #000000,
+    light: #FFFFFF
+);
+@function color($color-name) {
+    @return map-get($color, $color-name)
+};
+
+// font weights properties
+$fontweight: (
+    semi-bold: 600,
+    regular: 400
+);
+@function fontweight($font-weight) {
+    @return map-get($fontweight, $font-weight)
+};
+
+// font sizes properties
+$fontsize: (
+    regular: 16px,
+    title: 20px
+);
+@function fontsize($font-size) {
+    @return map-get($fontsize, $font-size)
+};
+
+// set all to default
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+// desktop ver
+body {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+
+    // nav start
+    .nav {
+        // border: $bordercheck;
+        position: absolute;
+        width: 100%;
+        // height: 80px;
+        padding: 50px 50px;
+
+        .logo {
+            // border: $bordercheck;
+            position: relative;
+            color: color(primary);
+            font-size: 24px;
+            font-weight: fontweight(semi-bold);
+            text-transform: uppercase;
+
+            span {
+                color: color(accentspink);
+            }
+        }
+    } // nav end
+
+    // top start
+    .top {
+        // border: $bordercheck;
+        position: relative;
+        height: 40vh;
+
+        .budget {
+            // border: $bordercheck;
+            position: relative;
+            height: 100%;
+            // width: 50%;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-between;
+            align-content: center;
+            padding: 130px 0 25px 0;
+
+            .budget_title {
+                // border: $bordercheck;
+                position: relative;
+                // align-self: center;
+                text-align: center;
+                color: color(primary);
+                font-size: 30px;
+                font-weight: fontweight(semi-bold);
+
+                .budget_title-month {
+                    color: color(accentspink);
+                }
+            }
+
+            .budget_value {
+                // border: $bordercheck;
+                position: relative;
+                // align-self: center;
+                text-align: center;
+                color: color(secondary);
+                font-size: 60px;
+                font-weight: fontweight(semi-bold);
+            }
+
+            .budget_both {
+                // border: $bordercheck;
+                position: relative;
+                width: 50%;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+
+                .right_side {
+                    // border: $bordercheck;
+                    position: relative;
+                    align-self: center;
+                    float: right;
+
+                    .budget_income-value, .budget_expenses-value {
+                        float: left;
+                        padding: 5px 0;
+                    }
+
+                    .budget_income-percentage {
+                        float: left;
+                        // margin-left: 10px;
+                    }
+
+                    .budget_expenses-percentage {
+                        float: left;
+                        margin-left: 10px;
+                        background-color: rgba(255, 255, 255, 0.2);
+                        padding: 5px;
+                        border-radius: 8px;
+                    }
+                }
+
+                .budget_income{
+                    // border: $bordercheck;
+                    position: relative;
+                    width: 45%;
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                    // align-items: center;
+                    color: color(light);
+                    font-size: fontsize(regular);
+                    font-weight: fontweight(semi-bold);
+                    text-transform: uppercase;
+                    background-color: color(accentsblue);
+                    border-radius: 8px;
+                    padding: 10px 10px;
+
+                    .budget_income-title {
+                        align-self: center;
+                    }
+                }
+
+                .budget_expenses{
+                    // border: $bordercheck;
+                    position: relative;
+                    width: 45%;
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                    // align-items: center;
+                    color: color(light);
+                    font-size: fontsize(regular);
+                    font-weight: fontweight(semi-bold);
+                    text-transform: uppercase;
+                    background-color: color(accentspink);
+                    border-radius: 8px;
+                    padding: 0 10px;
+
+                    .budget_expenses-title {
+                        align-self: center;
+                    }
+                }
+            }
+        }
+    } // top end
+
+    // bottom start
+    .bottom {
+        // border: $bordercheck;
+        position: relative;
+        height: 60vh;
+
+        // add new item start
+        .add_item {
+            // border: $bordercheck;
+            position: relative;
+            text-align: center;
+            padding: 25px 0;
+
+            .add_item-form {
+                // border: $bordercheck;
+                position: relative;
+                padding: 30px 0;
+                background: color(accentsblue);
+
+                // goes pink when select option: expenses
+                &.pink {
+                    background: color(accentspink);
+                }
+
+                // item type, description & value
+                .add_item-type, .add_item-description, .add_item-value {
+                    position: relative;
+                    height: 40px;
+                    outline-style: none;
+                    border: none;
+                    border-radius: 8px;
+                    margin-right: 10px;
+                    color: color(primary);
+                    font-size: fontsize(regular);
+                }
+
+                .add_item-type {
+                    width: 50px;
+                    font-weight: fontweight(semi-bold);
+                    cursor: pointer;
+                }
+
+                .add_item-description {
+                    width: 400px;
+                    padding-left: 10px;
+                }
+
+                .add_item-value {
+                    width: 100px;
+                    padding-left: 10px;
+                }
+
+                select option:checked {
+                    display: none;
+                }
+
+                input::placeholder {
+                    color: color(primary);
+                    opacity: 0.5;
+                    font-size: fontsize(regular);
+                }
+
+                // item add button
+                .add_item-btn {
+                    background: none;
+                    border: none;
+                    outline: none;
+                    color: color(light);
+                    font-size: 40px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                    cursor: pointer;
+                }
+            }
+        } // add new item end
+
+        // item list start
+        .item_list {
+            // border: $bordercheck;
+            position: relative;
+            // height: 100%;
+            display:grid;
+            grid-template: 1fr / repeat(2, 1fr);
+            // justify-items: center;
+            // align-self: center;
+
+            .income, .expenses {
+                // border: $bordercheck;
+                position: relative;
+                display: flex;
+                flex-flow: column wrap;
+                justify-items: start;
+                align-items: center;
+
+                .income_title, .expenses_title {
+                    // border: $bordercheck;
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size: 30px;
+                    font-weight: fontweight(semi-bold);
+                }
+
+                .income_title {
+                    color: color(accentsblue);
+                }
+
+                .expenses_title {
+                    color: color(accentspink);
+                }
+
+                .income_list, .expenses_list {
+                    // border: $bordercheck;
+                    position: relative;
+                    text-align: center;
+                    width: 70%;
+                    padding: 10px 0;
+
+                    .item {
+                        // border: $bordercheck;
+                        position: relative;
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: space-between;
+                        color: color(light);
+                        font-size: fontsize(regular);
+                        font-weight: fontweight(semi-bold);
+                        border-radius: 8px;
+                        padding: 10px 10px;
+                        margin: 10px 0;
+
+                        .item_description {
+                            // border: $bordercheck;
+                            align-self: center;
+                            text-align: left;
+                            width: 200px;
+                            padding: 5px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        .right_side {
+                            // border: $bordercheck;
+                            position: relative;
+                            display: flex;
+                            flex-flow: row wrap;
+                            align-items: center;
+    
+                            .item_value {
+                                // border: $bordercheck;
+                                transition: 0.3s ease-in-out;
+                            }
+    
+                            .item_percentage {
+                                // border: $bordercheck;
+                                padding: 5px;
+                                transition: 0.3s ease-in-out;
+                            }
+    
+                            .item_delete {
+                                // border: $bordercheck;
+                                position: absolute;
+                                right: 0px;
+                            }
+
+                            .item_delete-btn {
+                                // position: absolute;
+                                background: none;
+                                border: none;
+                                outline: none;
+                                color: color(light);
+                                font-size: 30px;
+                                padding: 0;
+                                // margin-left: 10px;
+                                cursor: pointer;
+                                display: inline-block;
+                                display: none;
+                            }
+                        }
+
+                        &:hover .item_delete-btn {
+                            display: block;
+                        }
+
+                        &:hover .item_value {
+                            transform: translateX(-37px);
+                        }
+
+                        &:hover .item_percentage {
+                            transform: translateX(-37px);
+                        }
+
+                        .right_side-mobile {
+                            display: none;
+                        }
+                    }
+                }
+
+                .income_list .item {
+                    background-color: color(accentsblue);
+                }
+
+                .expenses_list .item {
+                    background-color: color(accentspink);
+                }
+
+                .expenses_list .item .right_side .item_percentage {
+                    margin-left: 10px;
+                    background-color: rgba(255, 255, 255, 0.2);
+                    border-radius: 8px;
+                }
+            }
+        } // item list end
+    } // bottom end
+}
+
+@media only screen and (min-width: 416px) and (max-width: 1045px) {
+    body {
+        // border: $bordercheck;
+        .top {
+            // border: $bordercheck;
+    
+            .budget {
+                // border: $bordercheck;
+                justify-content: center;
+    
+                .budget_value {
+                    padding-top: 30px;
+                }
+    
+                .budget_both {
+                    // border:$bordercheck;
+                    width: 70%;
+                    padding-top: 30px;
+    
+                    .budget_income{
+                        width: 45%;
+                    }
+    
+                    .budget_expenses{
+                        width: 45%;
+                    }
+                }
+            }
+        } // top end
+
+        // bottom start
+        .bottom {
+            // border: $bordercheck;
+
+            // add new item start
+            .add_item {
+                // border: $bordercheck;
+                padding: 0 0 25px 0;
+            } // add new item end
+
+            // item list start
+            .item_list {
+
+                .income, .expenses {
+
+                    .income_list, .expenses_list {
+                        width: 70%;
+
+                        .item {
+
+                            .item_description {
+                                width: 110px;
+                            }
+                        }
+                    }
+                }
+            } // item list end
+
+        } // bottom end
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    body {
+    
+        .nav {
+            // border: $bordercheck;
+            padding: 25px 25px;
+    
+            .logo {
+                // border: $bordercheck;
+                font-size: 18px;
+            }
+        }
+    
+        .top {
+            // border: $bordercheck;
+            height: 45vh;
+    
+            .budget {
+                // border: $bordercheck;
+                justify-content: center;
+                padding-top: 40px;
+                padding-bottom: 0px;
+    
+                .budget_title {
+                    // border: $bordercheck;
+                    font-size: 20px;
+                }
+    
+                .budget_value {
+                    // border: $bordercheck;
+                    font-size: 40px;
+                    margin-top: 15px;
+                }
+    
+                .budget_both {
+                    // border: $bordercheck;
+                    width: 70%;
+                    height: 45%;
+                    margin-top: 15px;
+    
+                    .right_side {
+                        // border: $bordercheck;
+                        position: relative;
+                        display: flex;
+                        flex-flow: column wrap;
+                        justify-content: end;
+                        align-items: center;
+    
+                        .budget_income-value, .budget_expenses-value {
+                            padding: 0px 0;
+                        }
+    
+                        .budget_income-percentage {
+                            margin-top: 10px;
+                            padding: 5px;   
+                        }
+    
+                        .budget_expenses-percentage {
+                            margin-top: 10px;
+                            padding: 5px;                        }
+                    }
+    
+                    .budget_income{
+                        // border: $bordercheck;
+                        flex-flow: column wrap;
+                    }
+    
+                    .budget_expenses{
+                        // border: $bordercheck;
+                        flex-flow: column wrap;
+                        padding: 10px 10px;
+                    }
+                }
+            }
+        } // top end
+
+        // bottom start
+        .bottom {
+            // border: $bordercheck;
+
+            // add new item start
+            .add_item {
+                // border: $bordercheck;
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                padding: 0px 0;
+                z-index: 1;
+
+                .add_item-form {
+                    // border: $bordercheck;
+                    padding: 10px 0;
+
+                    // item type, description & value
+                    .add_item-type, .add_item-description, .add_item-value {
+                        margin-right: 0px;
+                    }
+
+                    .add_item-type {
+                        width: 30px;
+                    }
+
+                    .add_item-description {
+                        width: 150px;
+                    }
+
+                    .add_item-value {
+                        width: 80px;
+                    }
+                }
+            } // add new item end
+
+            // item list start
+            .item_list {
+                // border: $bordercheck;
+                position: relative;
+
+                .income, .expenses {
+                    // border: $bordercheck;
+
+                    .income_title, .expenses_title {
+                        display: none;
+                    }
+
+                    .income_list, .expenses_list {
+                        // border: $bordercheck;
+                        width: 80%;
+
+                        .item {
+                            // border: $bordercheck;
+                            color: color(primary);
+
+                            .item_description {
+                                width: 70px;
+                            }
+
+                            .right_side {
+                                display: none;
+                            }
+
+                            .right_side-mobile {
+                                // border: $bordercheck;
+                                display: flex;
+                                flex-flow: row wrap;
+
+                                .item_percentage-mobile {
+                                    padding: 5px;
+                                }
+
+                                .mobile_tap {
+                                    // border: $bordercheck;
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    color: color(light);
+                                    font-weight: fontweight(semi-bold);
+                                    padding: 8px 11px 8px 13px;
+                                    display: none;
+
+                                    .item_value {
+                                        // border: $bordercheck;
+                                        margin-left: 40px;
+                                        grid-area: value;
+                                        min-width: 90px;
+                                    }
+
+                                    .item_delete-btn {
+                                        // border: $bordercheck;
+                                        grid-area: delete;
+                                        background: none;
+                                        border: none;
+                                        outline: none;
+                                        color: color(light);
+                                        font-size: 30px;
+                                        padding: 0;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+
+                            &:hover .mobile_tap {
+                                display: flex;
+                                justify-items: end;
+                                align-items: center;
+                            }
+
+                        }
+                    }
+
+                    .income_list .item {
+                        background-color: color(light);
+                        border: 3px solid;
+                        border-color: color(accentsblue);
+                    }
+    
+                    .expenses_list .item {
+                        background-color: color(light);
+                        border: 3px solid;
+                        border-color: color(accentspink);
+                    }
+
+                    .income_list .item:hover, .expenses_list .item:hover {
+                        border: none;
+                    }
+
+                    .income_list .item .right_side-mobile .mobile_tap {
+                        background-color: color(accentsblue);
+                        border-radius: 8px;
+                    }
+
+                    .expenses_list .item .right_side-mobile .mobile_tap {
+                        background-color: color(accentspink);
+                        border-radius: 8px;
+                    }
+
+                    .expenses_list .item .right_side-mobile .item_percentage-mobile {
+                        margin-left: 10px;
+                        color: color(light);
+                        background-color: color(accentspink);
+                        border-radius: 8px;
+                    }
+                }
+            } // item list end
+
+        } // bottom end
+    }
+}

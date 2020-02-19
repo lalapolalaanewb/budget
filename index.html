@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- import custom css -->
+    <link rel="stylesheet" href="/client/style.css">
+    <!-- import ionic icon -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <title>Budget Web App</title>
+</head>
+<body>
+    <!-- top navigation -->
+    <div class="nav">
+        <!-- logo -->
+        <div class="logo">Bud<span>get</span></div>
+    </div>
+
+    <!-- 'top' part -->
+    <div class="top">
+        <!-- budget start -->
+        <div class="budget">
+            
+            <!-- budget title -->
+            <div class="budget_title">
+                Budget in <span class="budget_title-month">Month</span> 
+            </div>
+            <!-- budget value -->
+            <div class="budget_value">+ 0,000.45</div>
+            
+            <!-- income & expenses -->
+            <div class="budget_both">
+
+                <!-- income -->
+                <div class="budget_income">
+                    <!-- income title -->
+                    <div class="budget_income-title">Income</div>
+                    <!-- right hand-side info -->
+                    <div class="right_side">
+                        <!-- income value -->
+                        <div class="budget_income-value">+ 0,000.55</div>
+                        <!-- income percentage -->
+                        <div class="budget_income-percentage">&nbsp;</div>
+                    </div>
+                </div>
+
+                <!-- Expenses -->
+                <div class="budget_expenses">
+                    <!-- expenses title -->
+                    <div class="budget_expenses-title">Expenses</div>
+                    <!-- right hand-side info -->
+                    <div class="right_side">
+                        <!-- expenses value -->
+                        <div class="budget_expenses-value">- 0,000.10</div>
+                        <!-- expenses percentage -->
+                        <div class="budget_expenses-percentage">81%</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- bottom part -->
+    <div class="bottom">
+
+        <!-- add new item -->
+        <div class="add_item">
+            <div class="add_item-form">
+                <!-- add item type -->
+                <select class="add_item-type">
+                    <!-- item type: income -->
+                    <option value="inc" selected>+</option>
+                    <!-- item type: expenses -->
+                    <option value="exp">-</option>
+                </select>
+                <!-- add item description input -->
+                <input type="text" class="add_item-description" placeholder="Add description">
+                <!-- add item value input -->
+                <input type="number" step=".01" min="0" max="9999.99" class="add_item-value" placeholder="Value" oninput="maxLengthCheck(this)">
+                <button class="add_item-btn"><i class="ion-ios-checkmark-outline"></i></button>
+            </div>
+        </div>
+
+        <!-- item list -->
+        <div class="item_list">
+
+            <!-- income -->
+            <div class="income">
+                
+                <!-- income title -->
+                <div class="income_title">Income</div>
+                
+                <!-- income list -->
+                <div class="income_list">
+                    
+                    <!-- income list will show up here -->
+
+                </div>
+
+            </div>
+
+            <!-- expenses -->
+            <div class="expenses">
+                
+                <!-- expenses title -->
+                <div class="expenses_title">Expenses</div>
+                
+                <!-- expenses list -->
+                <div class="expenses_list">
+                    
+                    <!-- expenses list will show up here -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- import custom js -->
+    <script src="/client/app.js"></script>
+    <script>
+        function maxLengthCheck(object) {
+    
+            if (object.value.length > object.max.length) {
+                object.value = object.value.slice(0, object.max.length)
+            }
+        }
+    </script>
+</body>
+</html>
